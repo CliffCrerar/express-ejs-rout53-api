@@ -1,0 +1,82 @@
+<div>
+    <%= title %>
+</div>
+
+<div id="table">
+    <input id="inputData" hidden value="<%= zones %>">
+
+    <div class="row">
+
+        <div id="Id" class="col">
+            <h5 class="heading">ID</h5>
+        </div>
+
+        <div id="Name" class="col">
+            <h5 class="heading">Name</h5>
+        </div>
+
+        <div id="ResourceRecordSetCount" class="col">
+            <h5 class="heading">Record Count</h5>
+        </div>
+
+        <div id="PrivateZone" class="col">
+            <h5 class="heading">Private</h5>
+        </div>
+
+        <div id="Comment" class="col">
+            <h5 class="heading">Comment</h5>
+        </div>
+
+    </div>
+    <script>
+
+        let rowCount = 0;
+
+        const
+            colOrder = ['Id', 'Name', 'ResourceRecordSetCount', 'PrivateZone', 'Comment'], // row order
+
+            inputData = JSON.parse($('#inputData').val()), // data from input
+
+            div = $(document.createElement('div')), // base element
+
+            anchor = $(document.createElement('a')), // anchor element for id
+
+            row = div.clone().addClass('row'), // create row element
+
+            cell = div.clone().addClass('col'), // create cell element
+
+            table = $('#table'); // get table
+
+        for (let i = 0; i < inputData.length; i++) {
+
+            const thisRow = $(row).clone(); // clone row element
+
+            const rowData = inputData[i]; // assign row data to variable
+
+            table.append(thisRow); // append row
+
+            colOrder.forEach(col => { // for each row attribute
+
+                if (col === 'Id') { // if column is an id attribute
+
+                    const zoneId = rowData[col].split('/')[2]; // split id to change from path to atomic 
+
+                    const thisAnchor = anchor
+                        .clone() // clone anchor
+                        .attr('href', `${location.pathname}/zone/${zoneId}`) // assign the anchor
+                        .text(zoneId) // assign anchor text
+
+                    thisRow.append(cell.clone().append(thisAnchor)); // append to cell and append to row
+
+                } else {
+
+                    thisRow.append(cell.clone().text(rowData[col])) // append to row
+
+                }
+
+            });
+
+        }
+
+    </script>
+</div>

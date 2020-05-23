@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>AWS Client</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+  <!-- <link rel="stylesheet" href="stylesheets/style.css"/> -->
+
+  <link id="bsStyle" rel="stylesheet" href="/bootstrap/css/bootstrap.css"/>
+
+  <script id="jq" src="/jquery"></script>
+
+  <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+              <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+  <!-- styles -->
+  <style>
+    html, body {
+  
+  min-height: 100vh;
+  height: auto;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+header {
+  padding: 20px 20px; }
+
+main {
+  flex: 1; }
+
+a {
+  color: #00B7FF; }
+  </style>
+  <script>
+    window.onload = function(){
+      const jq = $('#jq');
+      const bsStyle = $('#bsStyle');
+      const bsScript = $('#bsScript');
+
+      jq.src = location.pathname +'jquery';
+    }
+  </script>
+  
+</head>
+
+<body>
+  <header class="px-5">
+    <h1>AWS Route 53</h1>
+  </header>
+  <main class="container">
+    <%- body %>
+  </main>
+  <footer class="position-fixed-bottom">
+    Footer
+  </footer>
+
+  
+  <script id="bsScript" src="/bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>

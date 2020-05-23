@@ -1,0 +1,11 @@
+<h2>Zone <span><%= zoneId %></span></h2>
+
+<div class="row">
+    
+</div>
+
+<input id="record" value="<%= zoneRecords %>"/>
+<script>
+    const zoneRecords = JSON.parse($("#record").val());
+    console.log(zoneRecords);
+</script>
